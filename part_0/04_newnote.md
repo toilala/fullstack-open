@@ -32,3 +32,6 @@ sequenceDiagram
     server-->>browser: the HTML file
     deactivate server
 ``` 
+
+  
+  

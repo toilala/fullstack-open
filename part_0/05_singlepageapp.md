@@ -22,6 +22,7 @@ sequenceDiagram
     activate server
     server-->>browser: JSON data
     deactivate server
+    
 
     browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
     activate server
