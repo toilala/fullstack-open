@@ -1,19 +1,34 @@
+```mermaid
 sequenceDiagram
-    participant You
-    participant Browser
-    participant Server
+    participant browser
+    participant server
 
-    You->>Browser: Type note and hit Save
-    Browser->>Server: POST /new_note
-    Server->>Server: Save that note
-    Server-->>Browser: Hey, go to /notes
-    Browser->>Server: GET /notes
-    Server-->>Browser: Here's the page
-    Browser->>Server: GET /main.css
-    Server-->>Browser: Here's the styling
-    Browser->>Server: GET /main.js  
-    Server-->>Browser: Here's the code
-    Browser->>Server: GET /data.json
-    Server-->>Browser: Here's all notes
-    Browser->>Browser: Show updated list
-    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: the HTML file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: the JSON file
+    deactivate server
+
+    Note right of browser: The browser executes the callback function that renders the notes
+
+    browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
+    activate server
+    server-->>browser: the HTML file
+    deactivate server
+``` 
